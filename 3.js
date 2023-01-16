@@ -1,9 +1,33 @@
-//inputString1 = [{col1:'a', col2:'b'}]
-//'Col1,col2\na,b'
+//result = 'col1,col2\na,b'
 
-//3. Write a program to convert an array of objects to a string. That contains dynamic columns and delimiter specified.
+const data = [{ 'col1': 'a', 'col2': 'b' }]
 
+const title = new Set()
+// console.log(title);
+data.forEach((values)=>{
+    for(const key in values){
+       title.add(key)
+    }
+})
+console.log(title);
 
+let resStr = [...title].toString().concat("\\n")
+// console.log(resStr);
 
-const inputString = [{col1 : 'a',col2 : 'b'}]
+data.forEach((obj)=>{
+    let string = '';
+    title.forEach((val)=>{
+        if(obj[val]){
+            string = string + `,${obj[val]}`
 
+        }
+        else{
+               string += ',-'
+        }
+        console.log(obj[val]); // a b
+
+    })
+    resStr += string
+})
+
+console.log(resStr);
