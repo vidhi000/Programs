@@ -1,9 +1,16 @@
-//convert string to 2D array 
-let data = 'col1,col2\na,b\nc,d'
-//result --> [{'col1': 'a', 'col2': 'b'}, {'col1': 'c', 'col2': 'd'}]
+// let input = 'col1,col2\na,b\nc,d'
 
-conv =(data,del = ',')=>{
-  const con = data.slice(0,data.indexOf('\n')).split(',')
-  return data
-}
-console.log(data);
+const convert = (input) => {
+    const title = input.slice(0,input.indexOf('\n')).split(',')         //first title seprate
+
+   // return title   //[col1,col2]
+
+     return input.slice(input.indexOf('\n')+1).split('\n').map(val=>{
+      const items =  val.split(',')
+       //  return items      //[ [ 'a', 'b' ], [ 'c', 'd' ], [ 'e', 'f' ] ]
+      return title.reduce((obj,title,idx)=>((obj[title] = items[idx]),obj),{})
+     })
+
+        }
+
+console.log(convert('col1,col2\na,b\nc,d\ne,f'));
