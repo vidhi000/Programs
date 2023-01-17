@@ -8,17 +8,6 @@ const res = (arr)=>{
 }
 console.log(res([1,2]));
 
-//new
-let arr = [1,2]
-//result --> [[],[1],[2],[2,1]]
-
-const res = (arr)=>{
-   return arr.reduce((a,b)=>
-    a.concat(a.map(item => [b].concat(item))),[[]])
-}
-// console.log([b].concat(item));
-
-console.log(res([1,2]));
 
 //[[]] --> arr with empty sub-arr
 //a = []
